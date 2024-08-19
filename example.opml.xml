@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml xmlns:frss="https://freshrss.org/opml" version="2.0">
+  <head>
+    <title>FreshRSS</title>
+    <dateCreated>Mon, 19 Aug 2024 10:13:13 -0500</dateCreated>
+  </head>
+  <body>
+    <outline text="YouTube Subscriptions▶">
+      <outline text="AJay Deluxe" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC6EkU9ytxtY6AEk1U4jhWbg" htmlUrl="https://www.youtube.com/@AJayLush"/>
+      <outline text="Articulate Design ASMR" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCOkFff6Mg5YEyeZ8XONGc9A" htmlUrl="https://www.youtube.com/@ArticulateDesignASMR"/>
+      <outline text="Brittany Broski" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCad_KQumqRY06gpb24HkpPw" htmlUrl="https://www.youtube.com/@Brittany_Broski"/>
+      <outline text="Caitlin Doughty" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCi5iiEyLwSLvlqnMi02u5gQ" htmlUrl="https://www.youtube.com/@AskAMortician"/>
+      <outline text="Carly Rae Jepsen" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC-4NAdFIP6h9BmtGUFL94Pg" htmlUrl="https://www.youtube.com/@carlyraemusic"/>
+      <outline text="CGP Grey" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC2C_jShtL725hvbm1arSV9w" htmlUrl="https://www.youtube.com/@CGPGrey"/>
+      <outline text="ContraPoints" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCNvsIonJdJ5E4EXMa65VYpA" htmlUrl="https://www.youtube.com/@ContraPoints"/>
+      <outline text="DAVID LYNCH THEATER" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCDLD_zxiuyh1IMasq9nbjrA" htmlUrl="https://www.youtube.com/@DAVIDLYNCHTHEATER"/>
+      <outline text="Defunctland" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCVo63lbKHjC04KqYhwSZ_Pg" htmlUrl="https://www.youtube.com/@Defunctland"/>
+      <outline text="Drawfee Extra" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCpKaZzU4K8X6i-9TXkiRikA" htmlUrl="https://www.youtube.com/@drawfeeextra"/>
+      <outline text="Drawfee Show" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCoal_hpPIPAnWlG-kWHLheA" htmlUrl="https://www.youtube.com/@Drawfee"/>
+      <outline text="Eddy Burback" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCuo9VyowIT-ljA5G2ZuC6Yw" htmlUrl="https://www.youtube.com/@EddyBurback"/>
+      <outline text="hbomberguy" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UClt01z1wHHT7c5lKcU8pxRQ" htmlUrl="https://www.youtube.com/@hbomberguy"/>
+      <outline text="IslaASMR" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCFVV32LVCLGqQA_TgEqfi1w" htmlUrl="https://www.youtube.com/@ISLAASMR"/>
+      <outline text="Jacob Geller" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCeTfBygNb1TahcNpZyELO8g" htmlUrl="https://www.youtube.com/@JacobGeller"/>
+      <outline text="Jessie Ware" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCisgqJFEjW68P8GdxZNP5aA" htmlUrl="https://www.youtube.com/@jessieware"/>
+      <outline text="Jim Sterling" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCWCw2Sd7RlYJ2yuNVHDWNOA" htmlUrl="https://www.youtube.com/@JimSterling"/>
+      <outline text="Jimち ASMR" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC4eO8gplCQQqD8yvuey1TxQ" htmlUrl="https://www.youtube.com/@JimASMR"/>
+      <outline text="Joseph Anderson" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCyhnYIvIKK_--PiJXCMKxQQ" htmlUrl="https://www.youtube.com/channel/UCyhnYIvIKK_--PiJXCMKxQQ"/>
+      <outline text="Kagi Inc" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCnC88nxmj8wbCljSKiR7KKQ" htmlUrl="https://www.youtube.com/@kagiinc8882"/>
+      <outline text="Latte ASMR" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCQe2Y7V-C9bNMAcCJCBvzQQ" htmlUrl="https://www.youtube.com/@LatteASMR"/>
+      <outline text="Let's Game It Out" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCto7D1L-MiRoOziCXK9uT5Q" htmlUrl="https://www.youtube.com/@LetsGameItOut"/>
+      <outline text="lilsimsie" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC_TYFButglZuuDbD-0Q_IzQ" htmlUrl="https://www.youtube.com/@lilsimsie"/>
+      <outline text="Lindsay Ellis" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCG1h-Wqjtwz7uUANw6gazRw" htmlUrl="https://www.youtube.com/@LindsayEllisVids"/>
+      <outline text="Noah Caldwell-Gervais" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC5CYeHPLer3lbEhgonvbbAA" htmlUrl="https://www.youtube.com/@broadcaststsatic"/>
+      <outline text="OneyPlays" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCO1ITICo8MLHGAXR1uzFwjA" htmlUrl="https://www.youtube.com/@OneyPlays"/>
+      <outline text="RedLetterMedia" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCrTNhL_yO3tPTdQ5XgmmWjA" htmlUrl="https://www.youtube.com/@RedLetterMedia"/>
+      <outline text="Róisín Murphy" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCWWcKw_VvPxFuiYnHYJcdFw" htmlUrl="https://www.youtube.com/@roisinmurphyofficial"/>
+      <outline text="Samothy Does A Thing" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCLgzo-99VUNmtim596FaDNg" htmlUrl="https://www.youtube.com/@samothy618"/>
+      <outline text="Sarah Z" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCK-GxvzttTnNhq3JPYpXhqg" htmlUrl="https://www.youtube.com/@SarahZ"/>
+      <outline text="slayyyter" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCjbIFp5s_kUgrH1S8-bG0vw" htmlUrl="https://www.youtube.com/@slayyyter"/>
+      <outline text="SsethTzeentach" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg" htmlUrl="https://www.youtube.com/@SsethTzeentach"/>
+      <outline text="The Alderoth Circle" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC2mr_TA9imEdTLurn9ccY_g" htmlUrl="https://www.youtube.com/@thealderothcircle"/>
+      <outline text="Trixie Mattel" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC0biFgrMdkv1hFAFLVePODQ" htmlUrl="https://www.youtube.com/@trixie"/>
+      <outline text="Vit ASMR" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCh76q7nv28_mJO0NGzFBxsA" htmlUrl="https://www.youtube.com/@vitdoesvoice"/>
+      <outline text="WOWPresents" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCUUUpaMp8DV6KUOfQwoIiLg" htmlUrl="https://www.youtube.com/@WOWPresents"/>
+    </outline>
+  </body>
+</opml>
