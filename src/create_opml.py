@@ -64,3 +64,10 @@ def get_subscriptions():
     )
 
     return subscriptions
+
+
+def format_subscriptions(subscriptions):
+    """
+    Formats subscription info from API into dictionary
+    """
+    pass
