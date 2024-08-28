@@ -1,4 +1,5 @@
 import os
+import time
 
 from dotenv import load_dotenv
 
@@ -6,19 +7,32 @@ load_dotenv()
 
 import threading
 
-from src.create_opml import create_opml, get_subscriptions
-from src.serve_opml import serve_opml
+from server import create_opml, serve_opml
+from youtube import get_subscriptions
+
+
+def refresh_opml(interval):
+    """
+    Periodically refresh the OPML file.
+    """
+    while True:
+        subscriptions = get_subscriptions()
+        if subscriptions:
+            create_opml(subscriptions)
+        time.sleep(interval)
+
 
 if __name__ == "__main__":
     """
     Main entry point of program
     """
 
-    # Create OPML
-    subscriptions = get_subscriptions()
-    create_opml(subscriptions)
+    # Start the thread for refreshing the OPML file
+    refresh_thread = threading.Thread(
+        target=refresh_opml, args=(int(os.environ["REFRESH_INTERVAL"]),)
+    )
+    refresh_thread.daemon = True  # Daemonize thread to exit when main program exits
+    refresh_thread.start()
 
-    # Serve OPML
-    thread = threading.Thread(target=serve_opml)
-    thread.start()
-    thread.join()
+    # Start the HTTP server in the main thread
+    serve_opml()

@@ -1,10 +1,15 @@
+import http.server
 import os
-import time
+import socketserver
 import xml.etree.ElementTree as ET
 
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-from oauth2client.tools import argparser
+from logger import logger
+
+
+class CustomHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.path = "/subscriptions.opml"
+        return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 
 def create_opml(subscriptions: dict):
@@ -47,27 +52,15 @@ def create_opml(subscriptions: dict):
     tree.write("subscriptions.opml")
 
 
-def get_subscriptions():
+def serve_opml():
     """
-    Retrieves the list of subscriptions for the authenticated user's channel
-    1. Authenticate the user with API
-    2. Retrieve list of channel subscriptions for the authenticated user
-    3. Return dictionary of info for each subscription
+    Serves the .opml file over HTTP server
     """
+    # Set the directory to the location of the OPML file
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    subscriptions = {}
+    Handler = CustomHandler
 
-    youtube = build(
-        os.environ["YOUTUBE_API_SERVICE_NAME"],
-        os.environ["YOUTUBE_API_VERSION"],
-        developerKey=os.environ["DEVELOPER_KEY"],
-    )
-
-    return subscriptions
-
-
-def format_subscriptions(subscriptions):
-    """
-    Formats subscription info from API into dictionary
-    """
-    pass
+    with socketserver.TCPServer(("", int(os.environ["HTTP_PORT"])), Handler) as httpd:
+        logger.info(f"Serving at port {os.environ['HTTP_PORT']}")
+        httpd.serve_forever()
