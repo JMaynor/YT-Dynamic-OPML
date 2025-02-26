@@ -1,0 +1,49 @@
+name: Create Release on Version Change
+
+on:
+  push:
+    paths:
+      - 'pyproject.toml'
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Extract current version from pyproject.toml
+        id: extract_current_version
+        run: |
+          current_version=$(grep -Po '(?<=^version = ")[^"]*' pyproject.toml)
+          echo "CURRENT_VERSION=$current_version" >> $GITHUB_OUTPUT
+
+      - name: Extract previous version from git
+        id: extract_previous_version
+        run: |
+          previous_version=$(git show HEAD~1:pyproject.toml | grep -Po '(?<=^version = ")[^"]*')
+          echo "PREVIOUS_VERSION=$previous_version" >> $GITHUB_OUTPUT
+
+      - name: Check if version has changed
+        id: version_check
+        run: |
+          if [ "${{ steps.extract_current_version.outputs.CURRENT_VERSION }}" == "${{ steps.extract_previous_version.outputs.PREVIOUS_VERSION }}" ]; then
+            echo "Version has not changed. Exiting."
+            exit 1
+          else
+            echo "Version has changed from ${{ steps.extract_previous_version.outputs.PREVIOUS_VERSION }} to ${{ steps.extract_current_version.outputs.CURRENT_VERSION }}."
+            exit 0
+          fi
+
+      - name: Create GitHub Release
+        if: steps.version_check.outcome == 'success'
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ steps.extract_current_version.outputs.CURRENT_VERSION }}
+          release_name: Release v${{ steps.extract_current_version.outputs.CURRENT_VERSION }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
