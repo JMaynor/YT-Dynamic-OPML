@@ -1,0 +1,12 @@
+name: yt-dynamic-opml
+
+services:
+  yt-dynamic-opml:
+    build: .
+    container_name: yt-dynamic-opml
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./service_account.json:/app/service_account.json:ro
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service_account.json

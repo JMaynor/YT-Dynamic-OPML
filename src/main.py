@@ -49,11 +49,11 @@ def read_root():
 
 
 @app.get("/subscriptions")
-def read_subscriptions():
+def read_subscriptions(channel_id: str):
     """
     Serve OPML XML file with channel subscriptions
     """
-    subscriptions = get_subscriptions()
+    subscriptions = get_subscriptions(channel_id)
     opml_content = subscriptions_to_opml(subscriptions)
     return Response(content=opml_content, media_type="application/xml")
 

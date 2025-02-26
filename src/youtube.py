@@ -1,56 +1,46 @@
 import json
 import os
-import pickle
 
 from _logger import logger
-from google.auth.transport.requests import Request
-from google_auth_oauthlib.flow import InstalledAppFlow
+from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 SCOPES = ["https://www.googleapis.com/auth/youtube.readonly"]
+SERVICE_ACCOUNT_FILE = "service_account.json"
 
 
-def save_subscriptions(subscriptions):
+def save_subscriptions(subscriptions, channel_id):
     """
     Save subscriptions to a local file
     """
-    with open("subscriptions.json", "w") as f:
+    filename = f"subscriptions_{channel_id}.json"
+    with open(filename, "w") as f:
         json.dump(subscriptions, f)
 
 
-def load_subscriptions():
+def load_subscriptions(channel_id):
     """
     Load subscriptions from a local file
     """
-    if os.path.exists("subscriptions.json"):
-        with open("subscriptions.json", "r") as f:
+    filename = f"subscriptions_{channel_id}.json"
+    if os.path.exists(filename):
+        with open(filename, "r") as f:
             return json.load(f)
     return {}
 
 
-def get_subscriptions():
+def get_subscriptions(channel_id):
     """
-    Retrieves the list of subscriptions for the authenticated user's channel
-    1. Authenticate the user with OAuth 2.0
-    2. Retrieve list of channel subscriptions for the authenticated user
+    Retrieves the list of subscriptions for the specified channel ID
+    1. Authenticate using service account
+    2. Retrieve list of channel subscriptions for the specified channel ID
     3. Return dictionary of info for each subscription
     """
 
-    credentials = None
-    if os.path.exists("token.pickle"):
-        with open("token.pickle", "rb") as token:
-            credentials = pickle.load(token)
-
-    if not credentials or not credentials.valid:
-        if credentials and credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-            credentials = flow.run_local_server(port=8080)
-
-        with open("token.pickle", "wb") as token:
-            pickle.dump(credentials, token)
+    credentials = service_account.Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, scopes=SCOPES
+    )
 
     youtube = build(
         serviceName="youtube",
@@ -61,30 +51,30 @@ def get_subscriptions():
     subscriptions = {}
 
     try:
-        # Retrieve list of channel subscriptions for the authenticated user
+        # Retrieve list of channel subscriptions for the specified channel ID
         response = (
             youtube.subscriptions()
-            .list(part="snippet", mine=True, maxResults=100)
+            .list(part="snippet", channelId=channel_id, maxResults=100)
             .execute()
         )
 
         # Extract channel ID and title for each subscription
         for item in response["items"]:
-            channel_id = item["snippet"]["resourceId"]["channelId"]
+            sub_channel_id = item["snippet"]["resourceId"]["channelId"]
             channel_title = item["snippet"]["title"]
-            subscriptions[channel_id] = {"title": channel_title}
+            subscriptions[sub_channel_id] = {"title": channel_title}
 
         # Save subscriptions to local file
-        save_subscriptions(subscriptions)
+        save_subscriptions(subscriptions, channel_id)
 
     except HttpError as e:
         logger.error(f"An HTTP error {e.resp.status} occurred:\n{e.content}")
         logger.error(f"Error details: {e}")
         # Load subscriptions from local file if API call fails
-        subscriptions = load_subscriptions()
+        subscriptions = load_subscriptions(channel_id)
     except Exception as e:
         logger.error(f"An error occurred: {e}")
         # Load subscriptions from local file if API call fails
-        subscriptions = load_subscriptions()
+        subscriptions = load_subscriptions(channel_id)
 
     return subscriptions
