@@ -1,3 +1,8 @@
+"""
+Main FastAPI application
+Serves youtube subscriptions of authenticated user in OPML format
+"""
+
 import xml.etree.ElementTree as ET
 
 import uvicorn

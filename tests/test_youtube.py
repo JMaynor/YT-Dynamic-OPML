@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from youtube import get_subscriptions
+from src.youtube import get_subscriptions
 
 load_dotenv()
 
