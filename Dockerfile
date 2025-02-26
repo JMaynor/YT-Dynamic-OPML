@@ -1,17 +1,15 @@
-# Use an official Python runtime as a parent image
-FROM python:3.12.3-slim-bookworm
+FROM ghcr.io/astral-sh/uv:python3.13-alpine
 
-# Set the working directory in the container to /app
+# Copy the project into the image
+ADD . /app
 WORKDIR /app
 
-# Add the current directory contents into the container at /app
-ADD . /app
+RUN uv sync --frozen
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Place executables in the environment at the front of the path
+ENV PATH="/app/.venv/bin:$PATH"
 
-# Make port 58000 available to the world outside this container
-EXPOSE 58000
+# Reset the entrypoint, don't invoke `uv`
+ENTRYPOINT []
 
-# Run main.py when the container launches
-CMD ["python", "main.py"]
+CMD ["python", "/app/src/main.py"]
