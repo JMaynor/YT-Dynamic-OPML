@@ -33,7 +33,7 @@ This project is intended for use with FreshRSS or other similar RSS programs. Fr
 1. Build and run the Docker container using Docker Compose:
 
     ```sh
-    docker compose up --d
+    docker compose up -d
     ```
 
 2. Access the application at `http://127.0.0.1:5000/subscriptions?channel_id=YOUR_CHANNEL_ID`.
