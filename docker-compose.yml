@@ -2,7 +2,7 @@ name: yt-dynamic-opml
 
 services:
   yt-dynamic-opml:
-    build: .
+    image: ghcr.io/jmaynor/yt-dynamic-opml:latest
     container_name: yt-dynamic-opml
     ports:
       - "5000:5000"
