@@ -38,6 +38,7 @@ def subscriptions_to_opml(subscriptions):
             outline,
             "outline",
             text=info["title"],
+            title=info["title"],
             type="rss",
             xmlUrl=f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}",
             htmlUrl=f"https://www.youtube.com/channel/{channel_id}",

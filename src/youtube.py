@@ -12,7 +12,9 @@ SERVICE_ACCOUNT_FILE = "service_account.json"
 
 def save_subscriptions(subscriptions, channel_id):
     """
-    Save subscriptions to a local file
+    Save subscriptions to a local file. Intention is to cache the subscriptions
+    in the event that API call fails. Don't want to delete feeds with an empty
+    OPML.
     """
     filename = f"subscriptions_{channel_id}.json"
     with open(filename, "w") as f:
@@ -21,7 +23,7 @@ def save_subscriptions(subscriptions, channel_id):
 
 def load_subscriptions(channel_id):
     """
-    Load subscriptions from a local file
+    Load subscriptions from a local file. Called when API call fails.
     """
     filename = f"subscriptions_{channel_id}.json"
     if os.path.exists(filename):
@@ -37,10 +39,13 @@ def get_subscriptions(channel_id):
     2. Retrieve list of channel subscriptions for the specified channel ID
     3. Return dictionary of info for each subscription
     """
-
-    credentials = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES
-    )
+    try:
+        credentials = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES
+        )
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+        return {}
 
     youtube = build(
         serviceName="youtube",
@@ -51,6 +56,7 @@ def get_subscriptions(channel_id):
     subscriptions = {}
 
     try:
+        logger.info(f"Retrieving subscriptions for: {channel_id}")
         # Retrieve list of channel subscriptions for the specified channel ID
         response = (
             youtube.subscriptions()
