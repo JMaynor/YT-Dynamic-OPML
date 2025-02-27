@@ -58,11 +58,15 @@ def get_subscriptions(channel_id):
             .execute()
         )
 
-        # Extract channel ID and title for each subscription
+        # Extract channel ID, title, and description for each subscription
         for item in response["items"]:
             sub_channel_id = item["snippet"]["resourceId"]["channelId"]
             channel_title = item["snippet"]["title"]
-            subscriptions[sub_channel_id] = {"title": channel_title}
+            channel_description = item["snippet"]["description"]
+            subscriptions[sub_channel_id] = {
+                "title": channel_title,
+                "description": channel_description,
+            }
 
         # Save subscriptions to local file
         save_subscriptions(subscriptions, channel_id)

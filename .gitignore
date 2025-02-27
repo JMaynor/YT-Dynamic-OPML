@@ -163,3 +163,4 @@ credentials.json
 token.pickle
 subscriptions.json
 service_account.json
+subscriptions*.json

@@ -4,6 +4,7 @@ Serves youtube subscriptions of authenticated user in OPML format
 """
 
 import xml.etree.ElementTree as ET
+from datetime import datetime
 
 import uvicorn
 from dotenv import load_dotenv
@@ -27,6 +28,8 @@ def subscriptions_to_opml(subscriptions):
     head = ET.SubElement(opml, "head")
     title = ET.SubElement(head, "title")
     title.text = "YouTube Subscriptions"
+    date_created = ET.SubElement(head, "dateCreated")
+    date_created.text = datetime.now().strftime("%a, %d %b %Y %H:%M:%S %z")
     body = ET.SubElement(opml, "body")
     outline = ET.SubElement(body, "outline", text="YouTube Subscriptions▶")
 
@@ -38,9 +41,12 @@ def subscriptions_to_opml(subscriptions):
             type="rss",
             xmlUrl=f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}",
             htmlUrl=f"https://www.youtube.com/channel/{channel_id}",
+            description=info["description"],  # Add description field
         )
-
-    return ET.tostring(opml, encoding="utf-8", method="xml")
+    xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    return (
+        f"{xml_declaration}{ET.tostring(opml, encoding='utf-8', method='xml').decode()}"
+    )
 
 
 @app.get("/")
