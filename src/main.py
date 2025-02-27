@@ -48,7 +48,7 @@ def read_root():
     return {"message": "Hello World"}
 
 
-@app.get("/subscriptions")
+@app.get("/subscriptions/{channel_id}.opml")
 def read_subscriptions(channel_id: str):
     """
     Serve OPML XML file with channel subscriptions
