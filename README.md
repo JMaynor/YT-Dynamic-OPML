@@ -2,6 +2,8 @@
 
 This project is intended for use with FreshRSS or other similar RSS programs. FreshRSS allows using a dynamic OPML file to populate a category of RSS feeds. The idea is to pull the list of subscriptions from the authenticated user's YouTube channel and return an OPML file with the corresponding RSS feeds. Allows YouTube to be the canonical list of one's subscriptions but also pull that list into an RSS app in an automatic way.
 
+Note: This project is working for me, however, it did take a good period of time before FreshRSS actually started pulling the list of individual feeds from the subscriptions endpoint. When I added my dynamic OPML in the subscriptions management page, it added it successfully. However, the category was empty initially. And it seemed randomly overnight, FreshRSS populated the category with each of the feeds. Not sure on that, if it's something to do with the OPML's formatting or some FreshRSS behavior I'm not familiar with.
+
 ## Config
 
 ### Steps to Set Up Google Cloud Project and Service Account
